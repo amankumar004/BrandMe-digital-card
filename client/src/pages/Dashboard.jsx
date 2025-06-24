@@ -73,7 +73,7 @@ export default function Dashboard() {
     );
   }
 
-  const publicUrl = `http://localhost:3000/card/${user.username}`; // during dev
+  const publicUrl = `https://brandme-digital-card.vercel.app/card/${user.username}`; // during dev
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10 bg-gray-100">
