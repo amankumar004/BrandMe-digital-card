@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../apiConfig";
 
 export default function EditProfile() {
 
@@ -36,7 +37,7 @@ export default function EditProfile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/profile/me", {
+        const res = await fetch(`${API_BASE_URL}/api/profile/me`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -119,7 +120,7 @@ export default function EditProfile() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/profile/update", {
+      const res = await fetch(`${API_BASE_URL}/api/profile/update`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -144,7 +145,7 @@ export default function EditProfile() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-6">
+    <div className="max-w-3xl mx-auto p-6 bg-indigo-50 shadow-xl rounded-lg mt-6">
       <h2 className="text-2xl font-bold mb-4 text-indigo-600">Edit Your Profile</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <h3 className="text-lg font-semibold mt-4">Title</h3>

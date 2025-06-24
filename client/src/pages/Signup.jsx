@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../apiConfig";
+
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ export default function Signup() {
         return;
       }
       try {
-        const res = await fetch(`http://localhost:5000/api/auth/check-username/${value}`);
+        const res = await fetch(`${API_BASE_URL}/api/auth/check-username/${value}`);
         const data = await res.json();
         setIsUsernameAvailable(data.available);
       } catch (err) {
@@ -40,7 +42,7 @@ export default function Signup() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/send-otp", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/send-otp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,7 +68,7 @@ export default function Signup() {
   const handleVerifyAndRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

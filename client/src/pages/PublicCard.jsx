@@ -10,6 +10,7 @@ import { FaSquarePhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { MdQrCode2 } from "react-icons/md";
 import { QRCodeCanvas } from "qrcode.react";
+import API_BASE_URL from "../apiConfig";
 
 export default function PublicCard() {
   const { username } = useParams();
@@ -27,7 +28,7 @@ export default function PublicCard() {
 
   useEffect(() => {
     async function fetchUser() {
-      const res = await fetch(`http://localhost:5000/api/profile/public/${username}`);
+      const res = await fetch(`${API_BASE_URL}/api/profile/public/${username}`);
       const data = await res.json();
       if (res.ok) setUser(data);
     }

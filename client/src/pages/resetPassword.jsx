@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import API_BASE_URL from "../apiConfig";
 
 export default function ResetPassword() {
   const { state } = useLocation(); // contains email from previous screen
@@ -13,7 +14,7 @@ export default function ResetPassword() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/forgot-password/reset", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/forgot-password/reset`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: state?.email, otp, newPassword }),

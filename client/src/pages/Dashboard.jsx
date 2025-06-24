@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { QRCodeCanvas } from "qrcode.react";
-import Logo from "../assets/bm-removebg-preview.png"; // Adjust the path as needed
+import API_BASE_URL from "../apiConfig";
 
 import {
   FaGlobe,
@@ -35,7 +35,7 @@ export default function Dashboard() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/profile/me", {
+      const res = await fetch(`${API_BASE_URL}/api/profile/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
