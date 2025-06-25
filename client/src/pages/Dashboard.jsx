@@ -52,15 +52,6 @@ export default function Dashboard() {
 
   const qrRef = useRef();
 
-  const handleDownloadQR = () => {
-    const canvas = qrRef.current.querySelector("canvas");
-    const url = canvas.toDataURL("image/png");
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${user.username}_card_qr.png`;
-    a.click();
-  };
-
   useEffect(() => {
     fetchProfile();
   }, []);
@@ -203,12 +194,6 @@ export default function Dashboard() {
             includeMargin={true}
           />
         </div>
-        <button
-          onClick={handleDownloadQR}
-          className="mt-3 px-4 py-1 text-sm bg-gray-200 hover:bg-gray-300 rounded-full"
-        >
-          Download QR
-        </button>
 
       </div>
 

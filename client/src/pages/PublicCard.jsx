@@ -35,16 +35,6 @@ export default function PublicCard() {
     fetchUser();
   }, [username]);
 
-  const handleDownloadQR = () => {
-    const canvas = qrRef.current?.querySelector("canvas");
-    if (!canvas) return;
-
-    const url = canvas.toDataURL("image/png");
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `${username}-qr.png`;
-    link.click();
-  };
 
   if (!user) {
     return (
@@ -137,12 +127,7 @@ export default function PublicCard() {
           <span>Scan QR to view this card</span>
         </div>
         <QRCodeCanvas value={publicUrl} size={160} />
-        <button
-          onClick={handleDownloadQR}
-          className="mt-3 px-4 py-1 bg-indigo-100 text-indigo-800 text-sm rounded-full hover:bg-indigo-200 transition"
-        >
-          Download QR
-        </button>
+
       </div>
     </div>
   );
