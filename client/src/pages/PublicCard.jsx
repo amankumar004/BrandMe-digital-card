@@ -44,7 +44,7 @@ export default function PublicCard() {
     );
   }
 
-  const publicUrl = `${API_BASE_URL}/api/profile/public/${username}`;
+  const publicUrl = `https://brandme-digital-card.vercel.app/card/${user.username}`; 
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-10 bg-gray-100">
